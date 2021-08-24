@@ -1,48 +1,104 @@
 {
-  "name": "eslint-plugin-prefer-arrow-functions",
+  "name": "@stayradiated/eslint-plugin-prefer-arrow-functions",
   "description": "Convert functions to arrow functions",
-  "version": "3.0.1",
-  "author": "Jamie Mason (https://github.com/JamieMason)",
-  "bugs": "https://github.com/JamieMason/eslint-plugin-prefer-arrow-functions/issues",
+  "license": "MIT",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "version": "4.0.0",
+  "author": {
+    "name": "George Czabania",
+    "url": "https://github.com/stayradiated"
+  },
+  "bugs": {
+    "url": "https://github.com/stayradiated/eslint-plugin-prefer-arrow-functions/issues"
+  },
   "contributors": [
-    "Triston Jones (https://github.com/TristonJ)"
+    {
+      "name": "Jamie Mason",
+      "url": "https://github.com/JamieMason"
+    },
+    {
+      "name": "Triston Jones",
+      "url": "https://github.com/TristonJ"
+    }
   ],
   "devDependencies": {
-    "@types/jest": "24.0.16",
-    "@types/node": "12.6.9",
+    "@types/node": "16.7.1",
+    "@typescript-eslint/parser": "4.29.3",
+    "ava": "3.15.0",
+    "del-cli": "4.0.1",
     "eslint": "5.16.0",
-    "jest": "24.8.0",
-    "prettier": "1.18.2",
-    "rimraf": "2.6.3",
-    "ts-jest": "24.0.2",
-    "tslint": "5.18.0",
-    "typescript": "3.5.3"
+    "eslint-plugin-fp": "2.3.0",
+    "prettier": "2.3.2",
+    "typescript": "4.3.5",
+    "xo": "0.44.0"
   },
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/JamieMason/eslint-plugin-prefer-arrow-functions",
+  "homepage": "https://github.com/stayradiated/eslint-plugin-prefer-arrow-functions",
   "keywords": [
     "es6",
     "eslint",
-    "eslint-plugin"
+    "eslint-plugin",
+    "arrow",
+    "function"
   ],
-  "license": "MIT",
-  "main": "dist/index.js",
   "peerDependencies": {
-    "eslint": ">=5.0.0"
+    "eslint": ">=7.32.0"
   },
-  "repository": "JamieMason/eslint-plugin-prefer-arrow-functions",
-  "resolutions": {
-    "lodash": ">=4.17.15"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stayradiated/eslint-plugin-prefer-arrow-functions.git"
   },
   "scripts": {
-    "build": "tsc --project .",
-    "format": "prettier --write './src/**/*.ts' './test/**/*.ts'",
-    "lint": "tslint --fix --project ./tsconfig.json",
-    "prebuild": "rimraf ./dist",
-    "prelint": "npm run format",
-    "prepack": "npm run build",
-    "test": "jest"
+    "test": "ava",
+    "tidy": "xo --fix",
+    "build": "del-cli dist && tsc"
+  },
+  "__comment": "The following configs are managed by `npx @stayradiated/jsconfig`",
+  "ava": {
+    "verbose": true
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "prettier": true,
+    "plugins": [
+      "fp"
+    ],
+    "extends": [
+      "plugin:fp/recommended"
+    ],
+    "rules": {
+      "ava/assertion-arguments": "off",
+      "ava/no-ignored-test-files": [
+        "error",
+        {
+          "files": [
+            "**/src/**/*.test.ts"
+          ],
+          "extensions": [
+            "ts"
+          ]
+        }
+      ],
+      "unicorn/prefer-node-protocol": "off",
+      "fp/no-unused-expression": "off",
+      "fp/no-nil": "off",
+      "fp/no-loops": "off",
+      "fp/no-mutation": "off"
+    }
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
   }
 }

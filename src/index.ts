@@ -1,11 +1,11 @@
-import { DEFAULT_OPTIONS } from './config';
-import preferArrowFunctions from './prefer-arrow-functions';
+import { DEFAULT_OPTIONS } from './config.js'
+import preferArrowFunctions from './prefer-arrow-functions.js'
 
-export = {
+export default {
   rules: {
-    'prefer-arrow-functions': preferArrowFunctions
+    'prefer-arrow-functions': preferArrowFunctions,
   },
   rulesConfig: {
-    'prefer-arrow-functions': [2, DEFAULT_OPTIONS]
-  }
-};
+    'prefer-arrow-functions': [2, DEFAULT_OPTIONS],
+  },
+}
